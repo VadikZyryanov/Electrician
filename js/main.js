@@ -4,11 +4,12 @@
 const togglePopup = () => {
     const callbackBtn = document.querySelector('#callback'),
         modalCallback = document.querySelector('.modal-callback'),
-        modalOverlay = document.querySelector('.modal-overlay');
+        modalOverlay = document.querySelector('.modal-overlay'),
+        element = document.querySelectorAll('.element.relative'),
+        buttonServices = document.querySelector('.button-services');
     
     const eventBody = (event) => {
         const target = event.target;
-        console.log(target);
         if (target.classList.contains('modal-overlay') || target.closest('.modal-close')) {
             closePopup();
         }
@@ -28,9 +29,15 @@ const togglePopup = () => {
         document.body.removeEventListener('click', eventBody);
     };
     
-    callbackBtn.addEventListener('click', () => {
-        openPopup();
-    });
+    callbackBtn.addEventListener('click', openPopup);
+
+    buttonServices.addEventListener('click', openPopup);
+
+    // element.forEach((el) => {
+    //     el.addEventListener('mouseover', () => {
+            
+    //     });
+    // })
 };
 togglePopup();
 
@@ -98,3 +105,52 @@ const slider = () => {
     setInterval(autoPlaySlide, 3000);
 };
 slider();
+
+//слайдер карусель
+const sliderCarousel = () => {
+    const servicesCarousel = document.querySelector('.services-carousel'),
+        element = document.querySelectorAll('.element.relative'),
+        arrowLeft = document.querySelector('.arrow-left'),
+        arrowRight = document.querySelector('.arrow-right');
+    let currentSlide = 0;
+
+    const prevSlide = () => {
+        if (currentSlide > 0) {
+            --currentSlide;
+            servicesCarousel.style.transform = `translateX(-${currentSlide * 400}px)`;
+        } 
+    };
+
+    const nextSlide = () => {
+        if (currentSlide < 3) {
+            ++currentSlide;
+            servicesCarousel.style.transform = `translateX(-${currentSlide * 400}px)`;
+        }
+    };
+
+    arrowLeft.addEventListener('click', prevSlide);
+    arrowRight.addEventListener('click', nextSlide);
+};
+sliderCarousel();
+
+//прокрутка наверх
+const upScrolling = () => {
+    const title = document.querySelector('.title-h2'),
+        upButton = document.querySelector('.up');
+
+    upButton.style.display = 'block';
+    upButton.addEventListener('click', () => {
+        document.body.scrollIntoView({behavior: "smooth"});
+    })
+    window.addEventListener('scroll', () => {
+        if (document.documentElement.scrollTop > title.offsetTop - 100) {
+            upButton.style.display = 'block';
+            upButton.addEventListener('click', () => {
+                document.body.scrollIntoView({behavior: "smooth"});
+            });
+        } else {
+            upButton.style.display = 'none';
+        }
+    })
+};
+upScrolling();

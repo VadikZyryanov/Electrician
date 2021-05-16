@@ -1398,6 +1398,20 @@ video#video_background {
 	clear: both;
 }
 
+.services-elements {
+	overflow: hidden;
+}
+
+.services-carousel {
+	display: flex;
+	transition: transform 0.5s;
+	will-change: transform;
+}
+
+.services-elements .element.relative {
+	width: 380px;
+}
+
 .services-elements .element-price {
 	margin-bottom: 15px;
 	font-weight: bold;
@@ -1405,6 +1419,7 @@ video#video_background {
 }
 
 .up {
+	display: none;
 	position: fixed;
 	bottom: 50px;
 	right: 50px;
