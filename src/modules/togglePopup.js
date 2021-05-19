@@ -13,7 +13,8 @@ const togglePopup = () => {
         }
     };
 
-    const openPopup = () => {
+    const openPopup = (event) => {
+        event.preventDefault();
         modalCallback.style.display = 'block';
         modalOverlay.style.display = 'block';
         document.body.style.overflow = 'hidden';      
@@ -28,14 +29,15 @@ const togglePopup = () => {
     };
 
     const addText = (elem, index) => {
-        const text = document.createElement('div');
-        text.classList.add('img-wrapper_text');
-        text.textContent = 'Оформить заявку';
-        text.style.display = 'block';
-        imgWrapper[index].append(text);
-        text.addEventListener('click', openPopup);
+        console.log(elem);
+        const textWrapper = document.createElement('div');
+        textWrapper.classList.add('img-wrapper_text');
+        textWrapper.textContent = 'Оформить заявку';
+        textWrapper.style.display = 'block';
+        imgWrapper[index].append(textWrapper);
+        textWrapper.addEventListener('click', openPopup);
         elem.addEventListener('mouseleave', () => {
-            text.style.display = 'none';
+            textWrapper.remove();
         });
     }
     
@@ -43,6 +45,9 @@ const togglePopup = () => {
         element[i].addEventListener('mouseenter', (event) => {
             const target = event.target;
             addText(target, i);
+        });
+        element[i].addEventListener('click', (event) => {
+            event.preventDefault();
         });
     }
 

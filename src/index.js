@@ -7,6 +7,7 @@ import sliderCarousel from './modules/sliderCarousel';
 import upScrolling from './modules/upScrolling';
 import accordeon from './modules/accordeon';
 import sendForm from './modules/sendForm';
+import regularExpressions from './modules/regularExpressions';
 
 //модальное окно
 togglePopup();
@@ -20,5 +21,7 @@ sliderCarousel();
 upScrolling();
 //аккордеон
 accordeon();
+//валидация
+regularExpressions();
 //отправка формы
 sendForm();
