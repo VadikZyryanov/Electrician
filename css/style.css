@@ -1094,7 +1094,7 @@ video#video_background {
 		height: 520px;
 	}
 
-	.top-slider .table {
+	/* .top-slider .table {
 		opacity: 0;
 		visibility: hidden;
 		-webkit-transform: scale(1.5);
@@ -1104,7 +1104,7 @@ video#video_background {
 		-webkit-transition: 0.5s;
 		-o-transition: 0.5s;
 		transition: 0.5s;
-	}
+	} */
 
 	.top-slider .table.active {
 		webkit-transform: scale(1);

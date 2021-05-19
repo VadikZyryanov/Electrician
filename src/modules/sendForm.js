@@ -20,8 +20,13 @@ const sendForm = () => {
                 <div class="sk-rotating-plane"></div>
             `;
             form.append(statusMessage);
+            const data = {
+                'name': formName.value,
+                'phone': formPhone.value
+            }
+            console.log(data);
             const formData = new FormData(form);
-            formData.append('retut', JSON.stringify(formName));
+            formData.append('json', JSON.stringify(data));
 
             const timeOutPostData = () => postData(formData)
                 .then((response) => {
