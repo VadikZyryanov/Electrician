@@ -34,11 +34,17 @@ const sendForm = () => {
                         throw new Error('status network not 200');
                     }
                     statusMessage.textContent = successMessage;
+                    setInterval(() => {
+                        statusMessage.textContent = '';
+                    }, 3000);
                     formName.value = '';
                     formPhone.value = '';
                 })
                 .catch((error) => {
                     statusMessage.textContent = errorMessage;
+                    setInterval(() => {
+                        statusMessage.textContent = '';
+                    }, 3000);
                     console.error(error);
                 });
             
